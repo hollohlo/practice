@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test_board.Mapper.BoardMapper">
+    <select id="getList" resultType="com.example.test_board.Domain.Board">
+        SELECT * FROM test_board;
+    </select>
+
+    <select id="getBoard" parameterType="int" resultType="com.example.test_board.Domain.Board">
+        SELECT * FROM test_board where boardId=#{boardId};
+    </select>
+
+    <insert id="uploadBoard" parameterType="com.example.test_board.Domain.Board">
+        INSERT INTO test_board ( title, content, name )
+        VALUES ( #{title}, #{content}, #{name} );
+    </insert>
+
+    <update id="updateBoard" parameterType="com.example.test_board.Domain.Board">
+        UPDATE test_board
+        SET title=#{title}, content=#{content}
+        WHERE boardId=#{boardId};
+    </update>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE
+        FROM test_board
+        WHERE boardId=#{boardId};
+    </delete>
+</mapper>
