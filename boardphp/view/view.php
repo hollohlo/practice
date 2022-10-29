@@ -27,17 +27,17 @@
 </div>
 
 <script>
-$(document).on('ready', function (e) {
+$(document).on('ready',(e) => {
     const form = $("#form");
     const boardId = <?=$repository[$boardindex]->id?>;
 
-    $(document).on('click', '#deleteBtn', function (e) {
+    $(document).on('click', '#deleteBtn',(e) => {
         $('#form').attr("action","../service/delete.php");
         form.append("<input type='hidden' name='boardId' value='"+boardId+"'>");
         form.submit();
     })
 
-    $(document).on('click','#updateBtn',function (e) {
+    $(document).on('click','#updateBtn',(e) => {
         let str="<input class='form-control' width='250'" +
         "placeholder='제목 입력' id='updateTitle'>";
         $("#title").html(str);
@@ -46,7 +46,7 @@ $(document).on('ready', function (e) {
         $("#updateBtn").attr("id","updateConfirmBtn");
     })
 
-    $(document).on('click','#updateConfirmBtn',function (e){
+    $(document).on('click','#updateConfirmBtn',(e) => {
         $('#form').attr("action","../service/update.php");
         const updateTitle= $('#updateTitle').val();
         const updateContent= $('#updateContent').val();
